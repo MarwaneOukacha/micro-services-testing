@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Etudiant
+  config:
+    import:
+    - configserver:http://localhost:8788
+  cloud:
+    config:
+      enabled: true

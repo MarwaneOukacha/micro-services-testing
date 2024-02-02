@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: API
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:2345/realms/wallet-realm
+  config:
+    import: configserver:http://localhost:8788
+  cloud:
+    config:
+      enabled: true
+    gateway:
+      routes:
+      - id: Classe
+        uri: http://localhost:8758
+        predicates:
+        - Path=/Classe/**
+      - id: Etudiant
+        uri: http://localhost:8755
+        predicates:
+        - Path=/Etudiant/**
+  

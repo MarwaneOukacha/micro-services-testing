@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Classe
+  config:
+    import:
+    - configserver:http://localhost:8788
+  cloud:
+    config:
+      enabled: true
