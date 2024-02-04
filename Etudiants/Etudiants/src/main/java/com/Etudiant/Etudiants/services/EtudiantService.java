@@ -20,9 +20,12 @@ public class EtudiantService {
 	
 		return "";
 	}
+	public EtudiantService(Etudiantreposetory repo) {
+		this.repo=repo;
+	}
 	
-	public void AddEtudiant(Etudiant e) {
-		repo.save(e);
+	public Etudiant AddEtudiant(Etudiant e) {
+		return repo.save(e);
 	}
 	
 	public void DeleteEtudiant(String email) {
