@@ -1,8 +1,13 @@
 package com.Etudiant.Etudiants.services;
 
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -32,6 +37,7 @@ public class EtudiantServiceTest {
 	        assertTrue(result != null && result.getUsername().equals("marwane"));
 	    }
 	    
+	    @Test
 	    public void GetEtudiantByEmailTest() {
 	    	String email="marwane@gmail.com";
 	    	Etudiant etudiant=new Etudiant();
@@ -40,6 +46,21 @@ public class EtudiantServiceTest {
 	    	when(repoMock.findByEmail(email)).thenReturn(etudiant);
 	    	var result=service.GetEtudiantByEmail(email);
 	    	assertTrue(result!=null && result.getUsername().equals(etudiant.getUsername()));
+	    }
+	    
+	    @Test
+	    public void GettAllEtudiantsTest() {
+	    	var AllEtudiants=new ArrayList<Etudiant>();
+	    	AllEtudiants.add(new Etudiant());
+	    	when(repoMock.findAll()).thenReturn(AllEtudiants);
+	    	
+	    	assertThat(service.GetAllEtudiants().size()>0);
+	    }
+	    
+	    @Test
+	    public void DeleteEtudiant() {
+	    	when(repoMock.findByEmail("xxx@mmmm.com")).thenReturn(new Etudiant());
+	    	assertTrue(service.DeleteEtudiant("xxx@mmmm.com"));
 	    }
 	
 }

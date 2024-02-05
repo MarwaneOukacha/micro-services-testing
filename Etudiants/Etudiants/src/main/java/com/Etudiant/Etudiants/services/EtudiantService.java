@@ -28,8 +28,9 @@ public class EtudiantService {
 		return repo.save(e);
 	}
 	
-	public void DeleteEtudiant(String email) {
+	public Boolean DeleteEtudiant(String email) {
 		repo.deleteById(repo.findByEmail(email).getId());
+		return true;
 	}
 	
 	public EtudiantDto GetEtudiantByEmail(String email) {
