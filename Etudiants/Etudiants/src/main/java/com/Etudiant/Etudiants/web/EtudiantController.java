@@ -19,6 +19,7 @@ import com.Etudiant.Etudiants.services.EtudiantService;
 @RequestMapping("/Etudiant")
 public class EtudiantController {
 	@Autowired EtudiantService service;
+	
 	@GetMapping
 	public List<EtudiantDto> GettAllEtudiants() {
 		return service.GetAllEtudiants();
